@@ -4,7 +4,7 @@
     <h1>My Cart</h1>
   </header>
 
-  <% if quantity = 0 %>
+  <% if enhanced_cart.length == 0 %>
     <div class="alert alert-success" role="alert">
       <h4 class="alert-heading">Your cart is empty.</h4>
       <%= link_to "Return to homepage", root_path %>
