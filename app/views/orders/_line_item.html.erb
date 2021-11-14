@@ -7,12 +7,12 @@
     <br>
   </td>
   <td>
-    <%= humanized_money_with_symbol item.item_price_cents / 100 %>
+    <%= humanized_money_with_symbol (item.item_price_cents) / 100.0 %>
   </td>
   <td>
     <%= item.quantity %>
   </td>
   <td>
-    <%= humanized_money_with_symbol (item.item_price_cents / 100) * item.quantity %>
+    <%= humanized_money_with_symbol (item.item_price_cents / 100.0) * item.quantity %>
   </td>
 </tr>
