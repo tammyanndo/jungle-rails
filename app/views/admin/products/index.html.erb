@@ -3,7 +3,11 @@
   <header class="page-header">
     <h1>Admin &raquo; All Products</h1>
   </header>
-
+  <% flash.each do |name, msg| -%>
+    <div class="alert alert-info">
+    <%= content_tag :div, msg, class: name %>
+    </div>
+  <% end -%>
   <div class="well">
     <%= link_to '+ New Product', [:new, :admin, :product], class: 'btn btn-info' %>
   </div>
