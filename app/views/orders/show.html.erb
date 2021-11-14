@@ -9,7 +9,37 @@
     <h4>Order details for: <%= @order.email %></h4>
     <h5>Final order amount: <%=humanized_money_with_symbol @order.total_cents / 100.0 %> </h5>
   </div>
-  <%= @order.line_items.inspect %>
+
+  <div class="order-line-items">
+    <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th colspan="2">Product</th>
+        <th>Unit Price</th>
+        <th>Quantity</th>
+        <th>Total Cost</th>
+      </tr>
+    </thead>
+    <tbody>
+
+      <% @order.line_items.each do |item| %>
+      <%= render 'line_item', item: item %>
+      <% end %>
+    </tbody>
+    <tfoot>
+      <tr>
+        <th colspan="4">
+          TOTAL:
+        </th>
+        <th>
+          <%= humanized_money_with_symbol @order.total_cents / 100.0 %>
+
+        </th>
+      </tr>
+    </tfoot>
+  </table>
+</div>
+
 
   <%= link_to "Continue Shopping", root_path, class: 'btn btn-lg btn-primary' %>
 

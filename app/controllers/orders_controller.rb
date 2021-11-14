@@ -2,6 +2,12 @@ class OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
+    @line_items_sum = @order.line_items.map {|item| item.item_price_cents * item.quantity}.sum
+  end
+  helper_method :show
+
+  def line_items_subtotal_cents
+    @line_items_sum = order.line_items.map {|item| item.price_cents * quantity}.sum
   end
 
   def create
@@ -34,6 +40,7 @@ class OrdersController < ApplicationController
       currency:    'cad'
     )
   end
+
 
   def create_order(stripe_charge)
     order = Order.new(
