@@ -48,6 +48,13 @@
             <%= fa_icon "shopping-cart" %> My Cart (<%= cart.values.inject(0, :+) %>)
           <% end %>
         </li>
+        <li class="d-flex" style="display: flex; align-items: center">
+          <% if current_user %>
+            Signed in as <%= current_user.name %> <span>|</span> <%= link_to "Logout", '/logout' %>
+          <% else %>
+            <%= link_to 'Login', '/login' %> <span>|</span> <%= link_to 'Signup', '/signup' %>
+          <% end %>
+      </li>
       </ul>
     </div>
   </div>
